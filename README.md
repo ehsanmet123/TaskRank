@@ -56,3 +56,5 @@ Tests cover rank gaps, adding/restoring, reorder persistence, stale drag data, a
 `src/tasks.ts` contains pure task operations and storage validation. `App.tsx` contains the screens and serialized AsyncStorage writes. Loading failures preserve existing storage; write failures show a retry banner.
 
 Drag integration follows the [Draggable FlatList documentation](https://github.com/computerjazz/react-native-draggable-flatlist); native dependencies were installed through [Expo install](https://docs.expo.dev/versions/latest/sdk/gesture-handler/).
+
+test
