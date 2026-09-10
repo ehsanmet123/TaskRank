@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "TaskRank",
+    "slug": "taskrank",
+    "scheme": "taskrank",
+    "version": "1.0.2",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "plugins": ["expo-web-browser"],
+    "android": {
+      "package": "com.kianiharchegani.taskrank",
+      "versionCode": 3,
+      "allowBackup": true,
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "00da482d-3fd5-49b7-83d3-ccc5f7e86dda"
+      }
+    },
+    "plugins": [
+      "expo-web-browser"
+    ]
+  }
+}
