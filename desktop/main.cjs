@@ -8,6 +8,19 @@ let window;
 let supabase;
 let session = null;
 let tasks = [];
+let restoreWidgetTimer = null;
+
+function hideWidgetForFiveMinutes() {
+  if (!window || window.isDestroyed()) return;
+  if (restoreWidgetTimer) clearTimeout(restoreWidgetTimer);
+  window.hide();
+  restoreWidgetTimer = setTimeout(() => {
+    restoreWidgetTimer = null;
+    if (!window || window.isDestroyed()) return;
+    window.show();
+    window.setAlwaysOnTop(true, 'floating');
+  }, 5 * 60 * 1000);
+}
 
 function localDateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -124,6 +137,10 @@ function createWindow() {
     backgroundColor: '#ffffff', webPreferences: { preload: path.join(__dirname, 'preload.cjs'), contextIsolation: true, nodeIntegration: false },
   });
   window.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  window.webContents.on('context-menu', event => {
+    event.preventDefault();
+    hideWidgetForFiveMinutes();
+  });
   window.loadFile(path.join(__dirname, 'renderer', 'index.html'));
 }
 
