@@ -8,7 +8,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kianiharchegani.taskrank",
+      "buildNumber": "1"
     },
     "plugins": [
       "expo-web-browser"

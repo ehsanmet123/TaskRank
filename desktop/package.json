@@ -19,6 +19,10 @@
     "productName": "TaskRank",
     "directories": { "output": "dist" },
     "files": ["**/*", "!runtime-config.example.json"],
-    "win": { "target": "nsis" }
+    "win": { "target": "nsis" },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.productivity"
+    }
   }
 }
