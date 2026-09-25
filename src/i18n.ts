@@ -377,3 +377,13 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
 export function translate(language: Language, key: TranslationKey, values: Record<string, string | number> = {}): string {
   return translations[language][key].replace(/\{(\w+)\}/g, (match, name: string) => String(values[name] ?? match));
 }
+
+export const todayCopy: Record<Language, { title: string; subtitle: string; empty: string; add: string; remove: string }> = {
+  en: { title: 'Today', subtitle: 'A focused list for the day ahead.', empty: 'Nothing selected for today yet.', add: 'Add to Today', remove: 'Remove from Today' },
+  fa: { title: 'امروز', subtitle: 'فهرستی متمرکز برای امروز.', empty: 'هنوز کاری برای امروز انتخاب نشده است.', add: 'افزودن به امروز', remove: 'حذف از امروز' },
+  sl: { title: 'Danes', subtitle: 'Osredotočen seznam za današnji dan.', empty: 'Za danes še ni izbranih opravil.', add: 'Dodaj za danes', remove: 'Odstrani iz danes' },
+  ar: { title: 'اليوم', subtitle: 'قائمة مركزة ليومك.', empty: 'لم يتم اختيار مهام لليوم بعد.', add: 'إضافة إلى اليوم', remove: 'إزالة من اليوم' },
+  es: { title: 'Hoy', subtitle: 'Una lista enfocada para el día.', empty: 'Aún no hay tareas elegidas para hoy.', add: 'Añadir a Hoy', remove: 'Quitar de Hoy' },
+  de: { title: 'Heute', subtitle: 'Eine fokussierte Liste für deinen Tag.', empty: 'Für heute sind noch keine Aufgaben ausgewählt.', add: 'Zu Heute hinzufügen', remove: 'Aus Heute entfernen' },
+  zh: { title: '今天', subtitle: '专注于今天的任务列表。', empty: '还没有为今天选择任务。', add: '加入今天', remove: '从今天移除' },
+};

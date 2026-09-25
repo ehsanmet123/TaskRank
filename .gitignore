@@ -29,10 +29,15 @@ yarn-error.*
 # macOS
 .DS_Store
 *.pem
+client_secret*.json
 
 # local env files
 .env
 .env*.local
+/desktop/runtime-config.json
+/desktop/node_modules/
+/desktop/dist/
+/desktop-dist/
 
 # typescript
 *.tsbuildinfo

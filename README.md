@@ -43,6 +43,18 @@ The Android app explicitly enables Android Auto Backup (`android.allowBackup: tr
 
 TaskRank uses Google sign-in through Supabase. Before building a release, run [`supabase/taskrank-cloud.sql`](supabase/taskrank-cloud.sql) in the Supabase SQL Editor. Then, in Supabase Auth settings, add `taskrank://auth/callback` to the Redirect URLs. In the Google Auth Platform console, create a **Web application** OAuth client, add your Supabase callback URL (`https://<project-ref>.supabase.co/auth/v1/callback`) as an authorized redirect URI, and paste the client ID and secret into the Google provider configuration in Supabase. Never put the Google client secret or a Supabase service-role key in the app.
 
+### Windows corner widget
+
+TaskRank includes a Windows companion widget. It stays above other applications in the lower-right corner, displays today's selected tasks, and can complete or restore them. It syncs through the same Supabase account as the Android app.
+
+Before packaging it, add `taskrank-desktop://auth/callback` to Supabase **Authentication → URL Configuration → Redirect URLs**. Then create the installer with:
+
+```powershell
+npm run desktop:dist
+```
+
+The installer is written to `desktop/dist/TaskRank Setup <version>.exe`. Install it, select **Connect Google**, and sign in with the same Google account used on Android.
+
 ## Verification
 
 ```sh

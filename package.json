@@ -34,7 +34,10 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/tasks.test.ts",
-    "export": "expo export --platform all"
+    "export": "expo export --platform all",
+    "desktop": "npm --prefix desktop run start",
+    "desktop:config": "node desktop/make-runtime-config.cjs",
+    "desktop:dist": "npm run desktop:config && desktop\\node_modules\\.bin\\electron-builder.cmd --projectDir desktop --win nsis --publish never"
   },
   "private": true
 }

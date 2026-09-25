@@ -1,5 +1,4 @@
 import { makeRedirectUri } from 'expo-auth-session';
-import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import type { Session, User } from '@supabase/supabase-js';
 import { supabase } from './supabase';
@@ -13,6 +12,8 @@ type RemoteTask = {
   done: boolean;
   created_at: string;
   completed_at: string | null;
+  today_on: string | null;
+  updated_at: string;
 };
 
 type RemoteList = { active_task_ids: unknown };
@@ -30,6 +31,8 @@ function fromRemote(task: RemoteTask): Task {
     done: task.done,
     createdAt: task.created_at,
     completedAt: task.completed_at,
+    todayOn: task.today_on,
+    updatedAt: task.updated_at,
   };
 }
 
@@ -37,10 +40,13 @@ function parseOrder(value: unknown): string[] {
   return Array.isArray(value) && value.every(id => typeof id === 'string') ? value : [];
 }
 
-/** Combines device changes with cloud changes. The device that syncs last wins a same-task conflict. */
+/** Combines device changes with cloud changes. The most recently edited task wins. */
 export function mergeCloudTasks(local: Task[], remote: RemoteTask[], cloudOrder: unknown): Task[] {
   const byId = new Map(remote.map(task => [task.id, fromRemote(task)]));
-  local.forEach(task => byId.set(task.id, task));
+  local.forEach(task => {
+    const cloudTask = byId.get(task.id);
+    if (!cloudTask || task.updatedAt >= cloudTask.updatedAt) byId.set(task.id, task);
+  });
   const values = [...byId.values()];
   const localIds = new Set(local.map(task => task.id));
   const preferredOrder = [...activeOrder(local), ...parseOrder(cloudOrder).filter(id => !localIds.has(id))];
@@ -59,10 +65,18 @@ export async function signInWithGoogle(): Promise<void> {
   if (!data.url) throw new Error('Google sign-in could not start.');
   const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
   if (result.type !== 'success') return;
-  const { queryParams } = Linking.parse(result.url);
-  const code = queryParams?.code;
-  if (typeof code !== 'string') throw new Error('Google sign-in did not return an authorization code.');
-  const { error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
+  const callback = new URL(result.url);
+  const code = callback.searchParams.get('code');
+  if (code) {
+    const { error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
+    if (sessionError) throw sessionError;
+    return;
+  }
+  const fragment = new URLSearchParams(callback.hash.replace(/^#/, ''));
+  const accessToken = callback.searchParams.get('access_token') ?? fragment.get('access_token');
+  const refreshToken = callback.searchParams.get('refresh_token') ?? fragment.get('refresh_token');
+  if (!accessToken || !refreshToken) throw new Error('Google sign-in did not return a session.');
+  const { error: sessionError } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
   if (sessionError) throw sessionError;
 }
 
@@ -74,7 +88,7 @@ export function startCloudSession(onChange: (session: Session | null) => void): 
 
 export async function syncTasks(user: User, local: Task[]): Promise<Task[]> {
   const [tasksResult, listResult] = await Promise.all([
-    supabase.from('tasks').select('id,title,done,created_at,completed_at').eq('user_id', user.id),
+    supabase.from('tasks').select('id,title,done,created_at,completed_at,today_on,updated_at').eq('user_id', user.id),
     supabase.from('task_lists').select('active_task_ids').eq('user_id', user.id).maybeSingle(),
   ]);
   if (tasksResult.error) throw tasksResult.error;
@@ -87,6 +101,8 @@ export async function syncTasks(user: User, local: Task[]): Promise<Task[]> {
     done: task.done,
     created_at: task.createdAt,
     completed_at: task.completedAt,
+    today_on: task.todayOn,
+    updated_at: task.updatedAt,
   }));
   const { error: taskError } = await supabase.from('tasks').upsert(records, { onConflict: 'id' });
   if (taskError) throw taskError;
