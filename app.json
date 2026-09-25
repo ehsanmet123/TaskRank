@@ -5,7 +5,7 @@
     "scheme": "taskrank",
     "version": "1.0.4",
     "orientation": "default",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/taskrank-store-icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
@@ -24,9 +24,9 @@
       "allowBackup": true,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/taskrank-android-foreground.png",
+        "backgroundImage": "./assets/taskrank-android-background.png",
+        "monochromeImage": "./assets/taskrank-android-monochrome.png"
       },
       "predictiveBackGestureEnabled": false
     },
