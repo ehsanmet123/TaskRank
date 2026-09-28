@@ -174,5 +174,10 @@ const lock = app.requestSingleInstanceLock();
 if (!lock) app.quit();
 app.on('second-instance', (_event, args) => { const url = args.find(arg => arg.startsWith(`${protocol}://`)); if (url) void completeAuth(url); window?.show(); window?.focus(); });
 app.on('open-url', (event, url) => { event.preventDefault(); void completeAuth(url); });
-app.whenReady().then(() => { app.setAsDefaultProtocolClient(protocol); initializeSupabase(); createWindow(); });
+app.whenReady().then(() => {
+  app.setAsDefaultProtocolClient(protocol);
+  app.setLoginItemSettings({ openAtLogin: true, openAsHidden: false });
+  initializeSupabase();
+  createWindow();
+});
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
