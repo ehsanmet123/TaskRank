@@ -4,6 +4,7 @@ const path = require('node:path');
 const { createClient } = require('@supabase/supabase-js');
 
 const protocol = 'taskrank-desktop';
+const ANDROID_APP_URL = 'https://play.google.com/store/apps/details?id=com.kianiharchegani.taskrank';
 let window;
 let supabase;
 let session = null;
@@ -131,9 +132,11 @@ async function completeAuth(url) {
 
 function createWindow() {
   const area = screen.getPrimaryDisplay().workArea;
+  const icon = path.join(__dirname, 'assets', 'taskrank-store-icon.png');
   window = new BrowserWindow({
     width: 220, height: 560, x: area.x + area.width - 240, y: area.y + area.height - 590,
     minWidth: 200, minHeight: 360, frame: false, alwaysOnTop: true, resizable: true,
+    icon,
     backgroundColor: '#ffffff', webPreferences: { preload: path.join(__dirname, 'preload.cjs'), contextIsolation: true, nodeIntegration: false },
   });
   window.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
@@ -161,6 +164,7 @@ ipcMain.handle('widget:rename', async (_event, id, title) => updateTask(id, { ti
 ipcMain.handle('widget:today', async (_event, id, selected) => updateTask(id, { today_on: selected ? localDateKey() : null }));
 ipcMain.handle('widget:delete', async (_event, id) => deleteTask(id));
 ipcMain.handle('widget:reorder', async (_event, id, direction) => reorderTask(id, direction));
+ipcMain.handle('external:android-app', () => shell.openExternal(ANDROID_APP_URL));
 ipcMain.handle('auth:google', async () => {
   if (!supabase) return sendState('Desktop configuration is missing. Run npm run desktop:config before building.');
   const { data, error } = await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${protocol}://auth/callback`, skipBrowserRedirect: true } });

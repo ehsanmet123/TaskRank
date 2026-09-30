@@ -3,7 +3,7 @@
     "name": "TaskRank",
     "slug": "taskrank",
     "scheme": "taskrank",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "default",
     "icon": "./assets/taskrank-store-icon.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     ],
     "android": {
       "package": "com.kianiharchegani.taskrank",
-      "versionCode": 7,
+      "versionCode": 10,
       "allowBackup": true,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",

@@ -44,7 +44,7 @@ function celebrate(task) {
   document.querySelector('#celebration-task').textContent = `${task.title} completed`;
   message.hidden = false;
   clearTimeout(celebrationTimer);
-  celebrationTimer = setTimeout(() => { message.hidden = true; }, 1900);
+  celebrationTimer = setTimeout(() => { message.hidden = true; }, 30000);
 }
 
 function render(state) {
@@ -90,6 +90,7 @@ document.querySelector('#minimize').onclick = () => window.taskrankDesktop.minim
 document.querySelector('#sync').onclick = () => window.taskrankDesktop.sync();
 connectButton.onclick = () => window.taskrankDesktop.connectGoogle();
 document.querySelector('#add').onclick = () => openEditor();
+document.querySelector('#android-app').onclick = event => { event.preventDefault(); window.taskrankDesktop.openAndroidApp(); };
 document.querySelector('#cancel-edit').onclick = closeEditor;
 document.querySelector('#save-task').onclick = () => {
   const title = input.value.trim();

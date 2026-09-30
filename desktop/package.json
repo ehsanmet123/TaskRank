@@ -1,6 +1,6 @@
 {
   "name": "taskrank-desktop",
-  "version": "1.0.10",
+  "version": "1.0.13",
   "private": true,
   "main": "main.cjs",
   "scripts": {
@@ -19,7 +19,7 @@
     "productName": "TaskRank",
     "directories": { "output": "dist" },
     "files": ["**/*", "!runtime-config.example.json"],
-    "win": { "target": "nsis" },
+    "win": { "target": "nsis", "icon": "assets/taskrank-store-icon.png" },
     "mac": {
       "target": ["dmg", "zip"],
       "category": "public.app-category.productivity"

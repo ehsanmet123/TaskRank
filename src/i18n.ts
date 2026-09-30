@@ -61,7 +61,9 @@ export const en = {
   "tryAgain": "Please try again.",
   "language": "Language",
   "closeLanguage": "Close language selection",
-  "languageSaveError": "Couldn’t save your language. Please try again."
+  "languageSaveError": "Couldn’t save your language. Please try again.",
+  "windowsWidgetLink": "Use TaskRank on Windows",
+  "windowsWidgetLinkBody": "Download the always-on-top desktop widget"
 };
 export type TranslationKey = keyof typeof en;
 
@@ -116,7 +118,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "لطفاً دوباره تلاش کنید.",
   "language": "زبان",
   "closeLanguage": "بستن انتخاب زبان",
-  "languageSaveError": "زبان ذخیره نشد. لطفاً دوباره تلاش کنید."
+  "languageSaveError": "زبان ذخیره نشد. لطفاً دوباره تلاش کنید.",
+  "windowsWidgetLink": "استفاده از تسک‌رنک در ویندوز",
+  "windowsWidgetLinkBody": "ویجت دسکتاپ همیشه‌رو را دانلود کنید"
 },
   sl: {
   "tasks": "Opravila",
@@ -167,7 +171,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "Poskusite znova.",
   "language": "Jezik",
   "closeLanguage": "Zapri izbiro jezika",
-  "languageSaveError": "Jezika ni bilo mogoče shraniti. Poskusite znova."
+  "languageSaveError": "Jezika ni bilo mogoče shraniti. Poskusite znova.",
+  "windowsWidgetLink": "Uporabljajte TaskRank v sistemu Windows",
+  "windowsWidgetLinkBody": "Prenesite vedno vidni namizni pripomoček"
 },
   ar: {
   "tasks": "المهام",
@@ -218,7 +224,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "يرجى المحاولة مجدداً.",
   "language": "اللغة",
   "closeLanguage": "إغلاق اختيار اللغة",
-  "languageSaveError": "تعذر حفظ اللغة. يرجى المحاولة مجدداً."
+  "languageSaveError": "تعذر حفظ اللغة. يرجى المحاولة مجدداً.",
+  "windowsWidgetLink": "استخدم TaskRank على Windows",
+  "windowsWidgetLinkBody": "نزّل أداة سطح المكتب الظاهرة دائماً"
 },
   es: {
   "tasks": "Tareas",
@@ -269,7 +277,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "Inténtalo de nuevo.",
   "language": "Idioma",
   "closeLanguage": "Cerrar selección de idioma",
-  "languageSaveError": "No se pudo guardar el idioma. Inténtalo de nuevo."
+  "languageSaveError": "No se pudo guardar el idioma. Inténtalo de nuevo.",
+  "windowsWidgetLink": "Usa TaskRank en Windows",
+  "windowsWidgetLinkBody": "Descarga el widget de escritorio siempre visible"
 },
   de: {
   "tasks": "Aufgaben",
@@ -320,7 +330,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "Bitte versuche es erneut.",
   "language": "Sprache",
   "closeLanguage": "Sprachauswahl schließen",
-  "languageSaveError": "Sprache konnte nicht gespeichert werden. Bitte erneut versuchen."
+  "languageSaveError": "Sprache konnte nicht gespeichert werden. Bitte erneut versuchen.",
+  "windowsWidgetLink": "TaskRank unter Windows nutzen",
+  "windowsWidgetLinkBody": "Lade das stets sichtbare Desktop-Widget herunter"
 },
   zh: {
   "tasks": "待办",
@@ -371,7 +383,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
   "tryAgain": "请重试。",
   "language": "语言",
   "closeLanguage": "关闭语言选择",
-  "languageSaveError": "无法保存语言。请重试。"
+  "languageSaveError": "无法保存语言。请重试。",
+  "windowsWidgetLink": "在 Windows 上使用 TaskRank",
+  "windowsWidgetLinkBody": "下载始终置顶的桌面小组件"
 },
 };
 export function translate(language: Language, key: TranslationKey, values: Record<string, string | number> = {}): string {

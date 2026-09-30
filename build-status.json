@@ -1,0 +1,48 @@
+{
+  "id": "fa1270f2-56f1-4536-9448-4b0a1c3092a4",
+  "status": "FINISHED",
+  "platform": "ANDROID",
+  "artifacts": {
+    "buildUrl": "https://expo.dev/artifacts/eas/uA_SbRXLB47ck0E27ewwuP-pWsuWYq2xAGzNT4s0JX8.aab",
+    "applicationArchiveUrl": "https://expo.dev/artifacts/eas/uA_SbRXLB47ck0E27ewwuP-pWsuWYq2xAGzNT4s0JX8.aab"
+  },
+  "fingerprint": {
+    "id": "01a0d7a0-2ac7-7ea8-bd5d-d31f262bc1e8",
+    "hash": "ef02fbacf88781da4a46a7c5b9a78404cd8e5235"
+  },
+  "initiatingActor": {
+    "id": "bbb94066-1f19-400d-a055-ff228761e3c7",
+    "displayName": "ehsanmet123"
+  },
+  "logFiles": [
+    "https://storage.googleapis.com/eas-workflows-production/logs/00da482d-3fd5-49b7-83d3-ccc5f7e86dda/fa1270f2-56f1-4536-9448-4b0a1c3092a4/2026-09-25T08%3A13%3A18Z-cdc40a74-6ce8-45ee-93e2-81ea0a63edc0.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260925%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260925T083542Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=52509446fd3dd4a360d550cb28f1a690a197262ed6c6afb06ee89ca28df7382c9a307fe09218246241ac571f32fee6e0c1d3614bfa26590f2f5b233e17a8f14f4f794457f36feac7027bea9d9c2299a6635dddc2e5e2d6b405ad7b8debd4f6465c4e4363f23146a26fcc87cae01d8d8daba6434c7415c684563d4a88ec6399ed4c433523a8c000c51254accc29d3c5112302cfdfc82a55d619efef3b29d1e14a62a95ef05f7667fdbc4da0e0d3f9579e0141f9ba12d9d99a4a600f251c6c97d69250b4fdd0c264629911afd510bc442eeb736ad2789da8a03094b3df1162a5ef0920d152c30bafd83f62633b0727f0bbf12af7635d2e5768ae9b2f3a07e1b20e"
+  ],
+  "app": {
+    "id": "00da482d-3fd5-49b7-83d3-ccc5f7e86dda",
+    "name": "taskrank",
+    "slug": "taskrank",
+    "ownerAccount": {
+      "id": "a05cd5a5-af4c-40f9-a932-a43ae411456d",
+      "name": "ehsanmet123"
+    }
+  },
+  "distribution": "STORE",
+  "buildProfile": "production",
+  "appIdentifier": "com.kianiharchegani.taskrank",
+  "sdkVersion": "57.0.0",
+  "appVersion": "1.0.4",
+  "appBuildVersion": "7",
+  "gitCommitHash": "87f3173b7a7ac1f41141511789ed4dc81282566f",
+  "gitCommitMessage": "Add synced Windows task widget",
+  "priority": "NORMAL",
+  "createdAt": "2026-09-25T08:13:13.230Z",
+  "updatedAt": "2026-09-25T08:25:48.161Z",
+  "completedAt": "2026-09-25T08:25:47.951Z",
+  "expirationDate": "2026-10-25T08:13:13.274Z",
+  "isForIosSimulator": false,
+  "metrics": {
+    "buildWaitTime": 4934,
+    "buildQueueTime": 4667,
+    "buildDuration": 745120
+  }
+}

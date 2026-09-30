@@ -18,6 +18,7 @@ import { localizedStyles } from './src/localizedStyles';
 type IconName = React.ComponentProps<typeof Feather>['name'];
 const Icon = ({ name, size = 22, color = '#8390A6' }: { name: IconName; size?: number; color?: string }) => <Feather name={name} size={size} color={color} />;
 const PRIVACY_POLICY_URL = 'https://ehsanmet123.github.io/TaskRank/';
+const WINDOWS_WIDGET_URL = 'https://github.com/ehsanmet123/TaskRank/releases';
 const localDateKey = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
 export default function App() {
@@ -180,6 +181,9 @@ export default function App() {
   return <GestureHandlerRootView style={s.root}><SafeAreaProvider><StatusBar style="dark" /><SafeAreaView style={s.safe}><View style={s.app}>
     <View style={s.brand}><View style={s.logo}><Icon name="bar-chart-2" color="white" size={19} /></View><Text style={s.brandText}>taskrank<Text style={{ color: blue }}>.</Text></Text><Pressable accessibilityRole="button" accessibilityLabel={session ? t('syncLabel') : t('connectLabel')} onPress={session ? () => void syncCloud() : () => void connectGoogle()} style={s.cloudButton}><Icon name={session ? 'cloud' : 'log-in'} size={14} color={blue} /><Text style={s.cloudText}>{cloudState === 'syncing' ? t('syncing') : cloudState === 'error' ? t('syncError') : session ? t('synced') : t('google')}</Text></Pressable><Pressable accessibilityRole="link" accessibilityLabel="Privacy policy" onPress={() => void Linking.openURL(PRIVACY_POLICY_URL)} style={s.touch}><Icon name="shield" size={18} color={blue} /></Pressable></View>
     <Pressable disabled={!languageReady || dragging} accessibilityRole="button" accessibilityLabel={t('language')} onPress={() => setLanguageOpen(true)} style={s.languageButton}><Icon name="globe" size={18} color={blue} /><Text style={s.languageText}>{t('language')} · {currentLanguage.name}</Text><Icon name="chevron-down" size={16} color={blue} /></Pressable>
+    <Pressable accessibilityRole="link" accessibilityLabel={t('windowsWidgetLink')} onPress={() => void Linking.openURL(WINDOWS_WIDGET_URL)} style={s.companionLink}>
+      <Icon name="monitor" size={18} color={blue} /><View style={s.companionLinkCopy}><Text style={s.companionLinkTitle}>{t('windowsWidgetLink')}</Text><Text style={s.companionLinkBody}>{t('windowsWidgetLinkBody')}</Text></View><Icon name="external-link" size={16} color={blue} />
+    </Pressable>
     <View style={s.heading}><View style={s.titleRow}><Text accessibilityRole="header" style={s.headingText}>{tab === 'Today' ? todayText.title : t(tab === 'Tasks' ? 'tasks' : 'done')}</Text><View style={s.count}><Text style={s.countText}>{tab === 'Tasks' ? active.length : tab === 'Today' ? todayTasks.length : done.length}</Text></View></View><Text style={s.subtitle}>{tab === 'Tasks' ? t('subtitleTasks') : tab === 'Today' ? todayText.subtitle : t('subtitleDone')}</Text></View>
     {!loaded ? <View style={s.empty}>{loadError ? <><Icon name="cloud-off" size={36} /><Text style={s.emptyTitle}>{t('loadError')}</Text><Text style={s.emptyBody}>{t('loadSafe')}</Text><Pressable style={s.touch} onPress={() => setRetry(n => n + 1)}><Text style={{ color: blue }}>{t('retry')}</Text></Pressable></> : <ActivityIndicator color={blue} accessibilityLabel={t('loading')} />}</View> : <>
       {saveError && <Pressable onPress={() => setTasks(current => [...current])} style={s.error}><Text style={s.errorText}>{t('saveError')}</Text></Pressable>}

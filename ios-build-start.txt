@@ -1,0 +1,17 @@
+
+⚠️ Detected that your app uses Expo Go for development, this is not recommended when building production apps.
+Learn more: https://expo.fyi/why-not-build-expo-go-for-production
+To suppress this warning, set EAS_BUILD_NO_EXPO_GO_WARNING=true.
+
+Resolved "production" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+Environment variables with visibility "Plain text" and "Sensitive" loaded from the "production" environment on EAS: EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY, EXPO_PUBLIC_SUPABASE_URL.
+
+app.json is missing ios.infoPlist.ITSAppUsesNonExemptEncryption boolean. Manual configuration is required in App Store Connect before the app can be tested.
+
+
+√ Using remote iOS credentials (Expo server)
+
+Distribution Certificate is not validated for non-interactive builds.
+Failed to set up credentials.
+Credentials are not set up. Run this command again in interactive mode.
+    Error: build command failed.

@@ -13,5 +13,6 @@ contextBridge.exposeInMainWorld('taskrankDesktop', {
   close: () => ipcRenderer.send('widget:close'),
   minimize: () => ipcRenderer.send('widget:minimize'),
   connectGoogle: () => ipcRenderer.invoke('auth:google'),
+  openAndroidApp: () => ipcRenderer.invoke('external:android-app'),
   onState: listener => ipcRenderer.on('widget:state', (_event, state) => listener(state)),
 });
